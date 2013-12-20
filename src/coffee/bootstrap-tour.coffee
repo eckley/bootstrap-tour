@@ -338,7 +338,7 @@
     # Check if step path equals current document path
     _isRedirect: (path, currentPath) ->
       path? and path isnt "" and
-        path.replace(/\?.*$/, "").replace(/\/?$/, "") isnt currentPath.replace(/\/?$/, "")
+      path.replace(/\?.*$/, "").replace(/\/?$/, "") isnt currentPath.replace(/\/?$/, "")
 
     # Execute the redirect
     _redirect: (step, path) ->
@@ -433,8 +433,8 @@
     # Copy pasted from bootstrap-tooltip.js with some alterations
     _replaceArrow: ($tip, delta, dimension, position)->
       $tip
-        .find(".arrow")
-        .css(position, if delta then 50 * (1 - delta / dimension) + "%" else "")
+      .find(".arrow")
+      .css(position, if delta then 50 * (1 - delta / dimension) + "%" else "")
 
     # Scroll to the popup if it is not in the viewport
     _scrollIntoView: (element, callback) ->
@@ -465,24 +465,24 @@
 
       # Go to next step after click on element with attribute 'data-role=next'
       $(document)
-        .off("click.tour-#{@_options.name}", ".popover.tour-#{@_options.name} *[data-role=next]:not(.disabled)")
-        .on("click.tour-#{@_options.name}", ".popover.tour-#{@_options.name} *[data-role=next]:not(.disabled)", (e) =>
+      .off("click.tour-#{@_options.name}", ".popover.tour-#{@_options.name} *[data-role=next]:not(.disabled)")
+      .on("click.tour-#{@_options.name}", ".popover.tour-#{@_options.name} *[data-role=next]:not(.disabled)", (e) =>
           e.preventDefault()
           @next()
         )
 
       # Go to previous step after click on element with attribute 'data-role=prev'
       $(document)
-        .off("click.tour-#{@_options.name}", ".popover.tour-#{@_options.name} *[data-role=prev]:not(.disabled)")
-        .on("click.tour-#{@_options.name}", ".popover.tour-#{@_options.name} *[data-role=prev]:not(.disabled)", (e) =>
+      .off("click.tour-#{@_options.name}", ".popover.tour-#{@_options.name} *[data-role=prev]:not(.disabled)")
+      .on("click.tour-#{@_options.name}", ".popover.tour-#{@_options.name} *[data-role=prev]:not(.disabled)", (e) =>
           e.preventDefault()
           @prev()
         )
 
       # End tour after click on element with attribute 'data-role=end'
       $(document)
-        .off("click.tour-#{@_options.name}", ".popover.tour-#{@_options.name} *[data-role=end]")
-        .on("click.tour-#{@_options.name}", ".popover.tour-#{@_options.name} *[data-role=end]", (e) =>
+      .off("click.tour-#{@_options.name}", ".popover.tour-#{@_options.name} *[data-role=end]")
+      .on("click.tour-#{@_options.name}", ".popover.tour-#{@_options.name} *[data-role=end]", (e) =>
           e.preventDefault()
           @end()
         )
@@ -491,13 +491,13 @@
       $(document)
       .off("click.tour-#{@_options.name}", ".popover.tour-#{@_options.name} *[data-role=pause-resume]")
       .on("click.tour-#{@_options.name}", ".popover.tour-#{@_options.name} *[data-role=pause-resume]", (e) ->
-        e.preventDefault()
+          e.preventDefault()
 
-        $this = $(@)
+          $this = $(@)
 
-        $this.text(if _this._paused then $this.data("pause-text") else $this.data("resume-text"))
-        if _this._paused then _this.resume() else _this.pause()
-      )
+          $this.text(if _this._paused then $this.data("pause-text") else $this.data("resume-text"))
+          if _this._paused then _this.resume() else _this.pause()
+        )
 
     # Keyboard navigation
     _setupKeyboardNavigation: ->
@@ -533,7 +533,7 @@
         class: "tour-backdrop"
       )
       @backdrop.backgroundShown = true
-      $("body").append(@backdrop)
+      $(this._options.container).append(@backdrop)
 
     _hideBackdrop: ->
       @_hideOverlayElement()
@@ -556,14 +556,14 @@
       offset.left = offset.left
 
       $background
-        .width($element.innerWidth())
-        .height($element.innerHeight())
-        .addClass("tour-step-background")
-        .offset(offset)
+      .width($element.innerWidth())
+      .height($element.innerHeight())
+      .addClass("tour-step-background")
+      .offset(offset)
 
       $element.addClass("tour-step-backdrop")
 
-      $("body").append($background)
+      $(this._options.container).append($background)
       @backdrop.$element = $element
       @backdrop.$background = $background
 
